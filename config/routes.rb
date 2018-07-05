@@ -1,0 +1,1 @@
+match '/static/:name', :to => 'static#show',  :via => [:get]

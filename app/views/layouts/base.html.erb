@@ -1,0 +1,27 @@
+<%
+  html = Nokogiri::HTML(render(:parent))
+
+  footer = html.xpath("//div[@id='footer']")
+  top_menu_left = html.xpath("//div[@id='top-menu']/ul")
+
+  if footer.present?
+    footer.first.prepend_child('<div id="footer-menu"></div>')
+    footer_menu = html.xpath("//div[@id='footer-menu']")
+  end
+
+  MillepondoStaticPages::settings.each do |key, page|
+
+    case page['position']
+      when MillepondoStaticPages::POSITION_TOP
+      if top_menu_left.present?
+          top_menu_left.first << '<li>'+link_to(l(('label_sp_'+key).to_sym), {'controller' => 'static', 'action' => 'show', 'name' => key })+'</li>'
+       end
+
+      when MillepondoStaticPages::POSITION_BOTTOM
+      if footer_menu.present?
+        footer_menu.first << '<span class="footer-link">'+link_to(l(('label_sp_'+key).to_sym), {'controller' => 'static', 'action' => 'show', 'name' => key })+'</span>'
+      end
+     end
+  end
+  return raw html
+%>

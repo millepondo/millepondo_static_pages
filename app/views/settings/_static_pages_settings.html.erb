@@ -1,0 +1,53 @@
+<div>
+  <% if settings['legal'].present? %>
+    <fieldset class="box">
+      <legend><%= l(:label_sp_legal) %></legend>
+      <div class="tabular settings">
+        <p>
+          <%= text_area_tag 'settings[legal][text]', settings['legal']['text'], :cols => 60, :rows => 10, :class => 'wiki-edit' %>
+          <%= wikitoolbar_for 'settings_legal_text' %>
+        </p>
+        <%= l(:label_sp_position) %>:
+        <p>
+          <label for="settings_legal_positon_top"><%= l(:label_sp_position_top) %></label>
+          <%= radio_button_tag("settings[legal][position]", MillepondoStaticPages::POSITION_TOP, MillepondoStaticPages::POSITION_TOP == settings['legal']['position'], :id => 'settings_legal_position_top') %>
+        </p>
+        <p>
+          <label for="settings_legal_positon_bottom"><%= l(:label_sp_position_bottom) %></label>
+          <%= radio_button_tag("settings[legal][position]", MillepondoStaticPages::POSITION_BOTTOM, MillepondoStaticPages::POSITION_BOTTOM == settings['legal']['position'], :id => 'settings_legal_position_bottom') %>
+        </p>
+        <p>
+          <label for="settings_legal_positon_none"><%= l(:label_sp_position_none) %></label>
+          <%= radio_button_tag("settings[legal][position]", MillepondoStaticPages::POSITION_NONE, MillepondoStaticPages::POSITION_NONE == settings['legal']['position'], :id => 'settings_legal_position_none') %>
+        </p>
+      </div>
+    </fieldset>
+  <% end %>
+</div>
+<div>
+  <% if settings['privacypolicy'].present? %>
+
+    <fieldset class="box">
+      <legend><%= l(:label_sp_privacypolicy) %></legend>
+      <div class="tabular settings">
+        <p>
+          <%= text_area_tag 'settings[privacypolicy][text]', settings['privacypolicy']['text'], :cols => 60, :rows => 10, :class => 'wiki-edit' %>
+          <%= wikitoolbar_for 'settings_privacypolicy_text' %>
+        </p>
+        <%= l(:label_sp_position) %>:
+        <p>
+          <label for="settings_privacypolicy_positon_top"><%= l(:label_sp_position_top) %></label>
+          <%= radio_button_tag("settings[privacypolicy][position]", MillepondoStaticPages::POSITION_TOP, MillepondoStaticPages::POSITION_TOP == settings['privacypolicy']['position'], :id => 'settings_privacypolicy_position_top') %>
+        </p>
+        <p>
+          <label for="settings_privacypolicy_positon_bottom"><%= l(:label_sp_position_bottom) %></label>
+          <%= radio_button_tag("settings[privacypolicy][position]", MillepondoStaticPages::POSITION_BOTTOM, MillepondoStaticPages::POSITION_BOTTOM == settings['privacypolicy']['position'], :id => 'settings_privacypolicy_position_bottom') %>
+        </p>
+        <p>
+          <label for="settings_privacypolicy_positon_none"><%= l(:label_sp_position_none) %></label>
+          <%= radio_button_tag("settings[privacypolicy][position]", MillepondoStaticPages::POSITION_NONE, MillepondoStaticPages::POSITION_NONE == settings['privacypolicy']['position'], :id => 'settings_privacypolicy_position_none') %>
+        </p>
+      </div>
+    </fieldset>
+  <% end %>
+</div>
